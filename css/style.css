@@ -70,10 +70,10 @@ body {
   color: #ff6a00;
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
+/* .nav-item.dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-}
+} */
 
 /* ================= SEARCH BOX ================= */
 

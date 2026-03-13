@@ -1,167 +1,210 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+
+<nav th:fragment="header"
+     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
   <div class="container">
-    <!-- LOGO WEBSITE -->
-    <a
-      class="navbar-brand fw-bold d-flex align-items-center"
-      href="../index.html"
-    >
-      <i class="fa-solid fa-seedling me-2" style="color: #ff6a00"></i>
-      <span style="color: #ff6a00">Ươm Mầm</span>
-    </a>
 
-    <!-- THANH TÌM KIẾM -->
-    <form class="d-flex ms-3 me-4 position-relative search-box">
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      <input
-        class="form-control rounded-pill ps-5"
-        type="search"
-        placeholder="Tìm chiến dịch, tổ chức..."
-      />
-    </form>
+<!-- LOGO WEBSITE -->
+<a class="navbar-brand fw-bold d-flex align-items-center"
+   th:href="@{/}">
+  <i class="fa-solid fa-seedling me-2" style="color:#ff6a00"></i>
+  <span style="color:#ff6a00">Ươm Mầm</span>
+</a>
 
-    <!-- NÚT MENU MOBILE -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#menu"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- THANH TÌM KIẾM -->
+<form class="d-flex ms-3 me-4 position-relative search-box">
+  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+  <input class="form-control rounded-pill ps-5"
+         type="search"
+         placeholder="Tìm chiến dịch, tổ chức..." />
+</form>
 
-    <!-- MENU CHÍNH -->
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav me-auto">
-        <!-- ỦNG HỘ -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            data-bs-toggle="dropdown"
-          >
-            Ủng hộ
+<!-- NÚT MENU MOBILE -->
+<button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- MENU CHÍNH -->
+<div class="collapse navbar-collapse" id="menu">
+
+  <ul class="navbar-nav me-auto">
+
+    <!-- ỦNG HỘ -->
+    <li class="nav-item dropdown">
+
+      <a class="nav-link dropdown-toggle"
+         data-bs-toggle="dropdown">
+         Ủng hộ
+      </a>
+
+      <ul class="dropdown-menu">
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/chien-dich}">
+             Chiến dịch
           </a>
-
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../ungho/chien_dich.html"
-                >Chiến dịch</a
-              >
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="../ungho/dong_hanh.html"
-                >Đồng hành</a
-              >
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="../ungho/to_chuc_gay_quy.html"
-                >Tổ chức gây quỹ</a
-              >
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="../ungho/ca_nhan_gay_quy.html"
-                >Cá nhân gây quỹ</a
-              >
-            </li>
-          </ul>
         </li>
 
-        <!-- GÂY QUỸ -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-            Gây quỹ
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/dong-hanh}">
+             Đồng hành
           </a>
-
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../gayquy/bat_dau.html">Bắt đầu</a>
-            </li>
-          </ul>
         </li>
 
-        <!-- KHÁM PHÁ -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-            Khám phá
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/to-chuc-gay-quy}">
+             Tổ chức gây quỹ
           </a>
-
-          <ul class="dropdown-menu">
-            <li>
-              <a
-                class="dropdown-item"
-                href="../khampha/ban_do_thien_nguyen.html"
-                >Bản đồ thiện nguyện</a
-              >
-            </li>
-
-            <li>
-              <a
-                class="dropdown-item"
-                href="../khampha/su_kien_thien_nguyen.html"
-                >Sự kiện thiện nguyện</a
-              >
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="../khampha/bang_tin.html"
-                >Bảng tin</a
-              >
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="../khampha/tin_tuc.html"
-                >Tin tức</a
-              >
-            </li>
-          </ul>
         </li>
 
-        <!-- GIỚI THIỆU -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-            Giới thiệu
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/ca-nhan-gay-quy}">
+             Cá nhân gây quỹ
           </a>
+        </li>
 
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../gioithieu/ve_thien_nguyen.html"
-                >Về thiện nguyện</a
-              >
-            </li>
+      </ul>
+    </li>
 
-            <li>
-              <a class="dropdown-item" href="../gioithieu/hoi_dap.html"
-                >Hỏi đáp</a
-              >
-            </li>
 
-            <li>
-              <a class="dropdown-item" href="../gioithieu/dieu_khoan.html"
-                >Điều khoản</a
-              >
-            </li>
+    <!-- GÂY QUỸ -->
+    <li class="nav-item dropdown">
 
-            <li>
-              <a
-                class="dropdown-item"
-                href="../gioithieu/chinh_sach_bao_mat.html"
-                >Chính sách bảo mật</a
-              >
-            </li>
-          </ul>
+      <a class="nav-link dropdown-toggle"
+         data-bs-toggle="dropdown">
+         Gây quỹ
+      </a>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/bat-dau}">
+             Bắt đầu
+          </a>
         </li>
       </ul>
 
-      <!-- BÊN PHẢI -->
-      <div class="d-flex align-items-center">
-        <button class="btn btn-cam me-3" type="button">Tạo chiến dịch</button>
+    </li>
 
-        <a class="nav-link" href="#">Đăng nhập</a>
-      </div>
-    </div>
+
+    <!-- KHÁM PHÁ -->
+    <li class="nav-item dropdown">
+
+      <a class="nav-link dropdown-toggle"
+         data-bs-toggle="dropdown">
+         Khám phá
+      </a>
+
+      <ul class="dropdown-menu">
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/ban-do-thien-nguyen}">
+             Bản đồ thiện nguyện
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/su-kien-thien-nguyen}">
+             Sự kiện thiện nguyện
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/bang-tin}">
+             Bảng tin
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/tin-tuc}">
+             Tin tức
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+
+    <!-- GIỚI THIỆU -->
+    <li class="nav-item dropdown">
+
+      <a class="nav-link dropdown-toggle"
+         data-bs-toggle="dropdown">
+         Giới thiệu
+      </a>
+
+      <ul class="dropdown-menu">
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/ve-thien-nguyen}">
+             Về thiện nguyện
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/hoi-dap}">
+             Hỏi đáp
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/dieu-khoan}">
+             Điều khoản
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             th:href="@{/chinh-sach-bao-mat}">
+             Chính sách bảo mật
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+  </ul>
+
+
+  <!-- BÊN PHẢI -->
+  <div class="d-flex align-items-center">
+
+    <a th:href="@{/tao-chien-dich}"
+       class="btn btn-cam me-3">
+       Tạo chiến dịch
+    </a>
+
+    <a class="nav-link"
+       th:href="@{/login}">
+       Đăng nhập
+    </a>
+
+  </div>
+
+</div>
+```
+
   </div>
 </nav>
+
+</body>
+</html>
