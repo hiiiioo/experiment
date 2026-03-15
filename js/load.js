@@ -80,4 +80,9 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-observer.observe(document.querySelector(".stats-section"));
+const targets = document.querySelectorAll(".animate");
+
+targets.forEach((el) => {
+  observer.observe(el);
+});
+

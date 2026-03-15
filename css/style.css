@@ -6,6 +6,9 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   background: #f5f6f7;
+  min-height:100vh;
+display:flex;
+flex-direction:column;
 }
 
 .container {
@@ -20,6 +23,8 @@ body {
   z-index: 1000;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.95);
+  padding:6px 0;
+  min-height:60px;
 }
 
 .navbar-brand {
@@ -70,10 +75,10 @@ body {
   color: #ff6a00;
 }
 
-/* .nav-item.dropdown:hover .dropdown-menu {
+.nav-item.dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-} */
+}
 
 /* ================= SEARCH BOX ================= */
 
@@ -137,14 +142,14 @@ body {
 
 /* ================= SECTION TITLE ================= */
 
-.section-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 38px;
-  font-weight: 600;
-  color: #ff6a00;
-  text-align: center;
-  letter-spacing: 1px;
-  margin-bottom: 35px;
+.section-title{
+font-family:"Roboto", sans-serif;
+font-size:38px;
+font-weight:600;
+color:#ff6a00;
+text-align:center;
+letter-spacing:1px;
+margin-bottom:35px;
 }
 
 /* ================= CATEGORY ================= */
@@ -172,34 +177,6 @@ body {
   display: none;
 }
 
-.category-item {
-  text-align: center;
-  min-width: 120px;
-  cursor: pointer;
-}
-
-.category-item i {
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  background: #fff3ea;
-  color: #ff6a00;
-  border-radius: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-  transition: 0.25s;
-}
-
-.category-item:hover i {
-  background: #ff6a00;
-  color: white;
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(255, 106, 0, 0.35);
-}
-
 /* ================= CARD ================= */
 
 .card {
@@ -211,9 +188,9 @@ body {
   transition: 0.3s;
 }
 
+
 .card:hover {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* ================= CAMPAIGN CARD ================= */
@@ -262,20 +239,6 @@ body {
   border-radius: 10px;
 }
 
-.progress-bar-home{
-  flex:1;
-  height:6px;
-  background:rgba(255,255,255,0.35);
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.progress-fill{
-  height:100%;
-  background:linear-gradient(90deg,#ff6a00,#ffb347);
-  border-radius:10px;
-}
-
 .progress-home{
   flex:1;
   height:6px;
@@ -287,6 +250,7 @@ body {
 .progress-fill{
   height:100%;
   background:linear-gradient(90deg,#ff6a00,#ffb347);
+  border-radius:10px;
 }
 
 /* ================= HEADER SLIDER ================= */
@@ -774,6 +738,80 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* ================= CATEGORY FILTER ================= */
+.category-filter{
+position:relative;
+font-family:"Roboto",sans-serif;
+}
+
+.category-menu{
+position:absolute;
+top:45px;
+left:0;
+width:180px;
+background:white;
+border-radius:10px;
+box-shadow:0 6px 18px rgba(0,0,0,0.12);
+padding:6px;
+max-height:220px;
+overflow-y:auto;
+z-index:100;
+font-family:"Roboto",sans-serif;
+font-size:14px;
+transition:0.2s;
+}
+
+/* FILTER BAR */
+#categoryBtn{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+#categoryBtn i{
+font-size:12px;
+}
+
+/* ================= CATEGORY DROPDOWN ================= */
+.category-menu-item{
+display:flex;
+align-items:center;
+gap:12px;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+font-family:"Roboto",sans-serif;
+color:#444;
+}
+
+.category-menu-item span{
+white-space:nowrap;
+}
+
+.category-menu-item i{
+width:28px;
+height:28px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff3ea;
+border-radius:50%;
+color:#ff6a00;
+flex-shrink:0;
+font-size:14px;
+}
+
+.category-menu-item:hover{
+background:#fff3ea;
+color:#ff6a00;
+}
+
+.category-menu-item:hover i{
+background:#ff6a00;
+color:white;
+}
+
 /* ================ Phần chiến dịch =========== */
 /* pagination */
 
@@ -791,13 +829,6 @@ body {
 
 /* card */
 
-.card {
-  border-radius: 12px;
-  overflow: hidden;
-  height: 100%;
-  transition: 0.25s;
-}
-
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -814,75 +845,65 @@ body {
   position: relative;
 }
 
-.progress-box {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
+.progress-box{
+  position:absolute;
+  bottom:14px;
+  left:14px;
+  right:14px;
 
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display:flex;
+  align-items:center;
+  gap:14px;
 
-  background: rgba(0, 0, 0, 0.65);
-  color: white;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(4px);
 
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
+  color:white;
+  padding:12px 18px;
+
+  border-radius:24px;
+  font-size:14px;
 }
 
-/* progress trên ảnh */
-
-.img-box {
-  position: relative;
-}
-
-.progress-box {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  background: rgba(0, 0, 0, 0.65);
-  color: white;
-
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-}
 
 /* thanh progress */
 
-.progress-box .progress {
-  flex: 1;
-  height: 6px;
-  background: #555;
-  border-radius: 10px;
-  overflow: hidden;
+.progress-box .progress{
+  flex:1;
+  height:10px;          /* thanh tiến độ dày hơn */
+  background:#555;
+  border-radius:20px;
+  overflow:hidden;
 }
 
-.progress-box .progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg,#ff6a00,#ffb347);
-  border-radius: 10px;
+.progress-box .progress-bar{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#ff6a00,#ffb347);
+  border-radius:20px;
 }
-
 /* text */
 
-.money {
+.money,
+.percent{
+  font-weight:500;
+  font-size:14px;
   white-space: nowrap;
-  font-weight: 500;
 }
 
-.percent {
-  white-space: nowrap;
-  font-weight: 500;
+#statusFilter{
+height:38px;
+padding:6px 32px 6px 14px; /* chừa chỗ cho mũi tên */
+font-size:14px;
+font-weight:400;
+line-height:1.4;
 }
+
+#categoryBtn{
+padding:5px 14px;
+}
+
+
 
 /* Thanh loc */
 .filter-tabs{
@@ -906,11 +927,227 @@ border-bottom:3px solid #ff6a00;
 font-weight:500;
 }
 
+.input-group{
+max-width:300px;
+margin-left:auto;
+border-radius:30px;
+overflow:hidden;
+}
+
+.input-group input{
+border:none;
+padding:8px 15px;
+}
+
+.input-group-text{
+border:none;
+background:white;
+}
+
+/* ================= Campaign 1 ==============*/
+/* ================= CAMPAIGN TAG ================= */
+
+.campaign-tags{
+display:flex;
+justify-content:center;
+gap:10px;
+}
+
+.tag{
+display:inline-flex;
+align-items:center;
+gap:6px;
+
+border:1px solid #ddd;
+padding:6px 12px;
+
+border-radius:20px;
+font-size:14px;
+background:white;
+color:#444;
+}
+
+.tag i{
+font-size:13px;
+color:#777;
+}
+
+/* ================= CARD LINK ================= */
+.card-link{
+display:block;
+text-decoration:none;
+color:inherit;
+}
+
+/* ================= CAMPAIGN GALLERY ================= */
+
+.campaign-gallery{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.campaign-gallery img{
+width:80px;
+height:60px;
+object-fit:cover;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.campaign-gallery img:hover{
+transform:scale(1.05);
+}
+
+/* ================= CAMPAIGN SIDEBAR ================= */
+
+.campaign-sidebar{
+position:sticky;
+top:90px;
+}
+
+/* ================= CAMPAIGN PROGRESS ================= */
+
+.campaign-progress{
+height:8px;
+background:#eee;
+border-radius:20px;
+overflow:hidden;
+margin-top:5px;
+}
+
+.campaign-progress-bar{
+height:100%;
+background:linear-gradient(90deg,#ff6a00,#ffb347);
+}
+
+.campaign-progress-text{
+display:flex;
+justify-content:space-between;
+font-size:13px;
+margin-top:6px;
+color:#666;
+}
+
+/* ================= CAMPAIGN GALLERY ACTIVE ================= */
+
+.campaign-gallery img:hover{
+transform:scale(1.05);
+border:2px solid #ff6a00;
+}
+
+/* ================= CAMPAIGN CARD HOVER ================= */
+
+.campaign-card img{
+transition:0.3s;
+}
+
+.campaign-card:hover img{
+transform:scale(1.05);
+}
+
+/* ================= ACTIVE GALLERY ================= */
+
+.campaign-gallery img.active{
+border:2px solid #ff6a00;
+}
+
+/* ================= CAMPAIGN MAIN IMAGE ================= */
+
+.campaign-main-img{
+width:100%;
+height:500px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.pagination-donor{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin-top:20px;
+}
+
+.page-btn{
+width:40px;
+height:40px;
+border-radius:10px;
+border:1px solid #ddd;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:0.2s;
+}
+
+.page-btn:hover{
+background:#f3f3f3;
+}
+
+.page-btn:disabled{
+opacity:0.4;
+cursor:not-allowed;
+}
+
+.page-number{
+font-weight:500;
+color:#444;
+}
+
+/* ================= DONOR TABLE FIX ================= */
+
+#donors table{
+width:100%;
+table-layout:fixed;
+}
+
+#donors th,
+#donors td{
+text-align:left;
+white-space:nowrap;
+}
+
+.donor-table{
+width:100%;
+overflow:hidden;
+}
+
+.advanced-filter{
+position:absolute;
+z-index:1000;
+margin-top:10px;
+}
+
+.filter-box{
+width:420px;
+background:white;
+border-radius:12px;
+padding:20px;
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.filter-box label{
+font-size:14px;
+font-weight:500;
+margin-bottom:5px;
+}
+
+.filter-actions{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:20px;
+}
+
 /* ================= FOOTER ================= */
 
 .footer {
   background: #f5f5f5;
   padding: 60px 0 30px;
+  margin-top:auto;
 }
 
 .footer-logo {
