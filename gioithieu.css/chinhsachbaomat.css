@@ -1,0 +1,73 @@
+/* ================= GLOBAL ================= */
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ================= HEADER ================= */
+
+.baomat-page .header{
+background:#ff4d00;
+color:white;
+text-align:center;
+padding:40px 20px;
+}
+
+.baomat-page .header h1{
+margin:0;
+font-size:32px;
+}
+
+.baomat-page .header p{
+margin-top:10px;
+font-size:16px;
+}
+
+/* ================= CONTENT ================= */
+
+.baomat-page .content{
+padding:30px 40px;
+line-height:1.7;
+}
+
+.baomat-page .content h3{
+margin-top:25px;
+}
+
+.baomat-page .content ul{
+margin-left:20px;
+}
+
+.baomat-page .content li{
+margin-bottom:8px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+.baomat-page .header{
+padding:25px 15px;
+}
+
+.baomat-page .header h1{
+font-size:24px;
+}
+
+.baomat-page .header p{
+font-size:14px;
+}
+
+.baomat-page .content{
+padding:20px;
+}
+
+.baomat-page .content h3{
+font-size:18px;
+}
+
+.baomat-page .content ul{
+margin-left:15px;
+}
+
+}

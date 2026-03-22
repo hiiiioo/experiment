@@ -1,28 +1,143 @@
 <!doctype html>
 <html lang="vi">
-
 <head>
-
+    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Nền tảng gây quỹ cộng đồng, kết nối yêu thương và lan tỏa giá trị tốt đẹp.">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- Icon -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../ungho.css/tochucgayquy.css">
+<link rel="stylesheet" href="../ungho.css/trangchu_chiendich.css">
 
 <title>Chiến dịch</title>
-
-<link rel="stylesheet" href="/css/style.css">
-
 </head>
 
 <body>
+<div class="tochuc-page">
 
 <div id="header"></div>
+<!-- Hero -->
+<section class="hero">
+    <div class="container text-center">
+        <h1>Khám phá tổ chức gây quỹ</h1>
+        <p>Kết nối yêu thương – lan tỏa giá trị cộng đồng</p>
+
+        <div class="hero-stats">
+            <div>
+                <h3>120+</h3>
+                <span>Tổ chức</span>
+            </div>
+            <div>
+                <h3>3.5 tỷ</h3>
+                <span>Đã gây quỹ</span>
+            </div>
+            <div>
+                <h3>25.000+</h3>
+                <span>Lượt ủng hộ</span>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="container mt-5">
-<h2>Trang chiến dịch</h2>
+    <h4 class="section-title">Tổ chức nổi bật</h4>
+
+    <div class="highlight-box">
+        <div class="highlight-left">
+            <h5>Hội chữ thập đỏ Việt Nam</h5>
+            <p>Chiến dịch cứu trợ khẩn cấp miền Trung sau bão lũ.</p>
+
+            <p class="money">120.000.000₫</p>
+
+            <div class="progress custom-progress">
+                <div class="progress-bar" style="width: 80%"></div>
+            </div>
+
+            <button class="btn-main">Ủng hộ ngay</button>
+        </div>
+
+        <div class="highlight-right">
+            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png">
+        </div>
+    </div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-box-org container">
+    <div class="search-inner">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm tổ chức...">
+        <button>Tìm kiếm</button>
+    </div>
+</section>
+
+<!-- FILTER -->
+<section class="container mt-3">
+    <div class="filter-bar">
+        <button class="active">Tất cả</button>
+        <button>Y tế</button>
+        <button>Giáo dục</button>
+        <button>Môi trường</button>
+        <button>Cộng đồng</button>
+    </div>
+</section>
+
+<!-- TRUST -->
+<section class="container mt-5">
+    <div class="trust-box">
+        <div>
+            <i class="fa fa-shield-alt"></i>
+            <h6>Minh bạch</h6>
+            <p>Thông tin gây quỹ rõ ràng, công khai</p>
+        </div>
+
+        <div>
+            <i class="fa fa-users"></i>
+            <h6>Cộng đồng lớn</h6>
+            <p>Hàng ngàn người tham gia ủng hộ</p>
+        </div>
+
+        <div>
+            <i class="fa fa-hand-holding-heart"></i>
+            <h6>Tác động thật</h6>
+            <p>Giúp đỡ đúng người, đúng hoàn cảnh</p>
+        </div>
+    </div>
+</section>
+
+<!-- CARD LIST -->
+<section class="container mt-4">
+ <div class="row g-4" id="org-list"></div>
+</section>
+
+<div class="text-center mt-5 mb-4">
+    <button class="load-more">
+        Xem thêm <i class="fa fa-arrow-down ms-2"></i>
+    </button>
+</div>
+
+<section class="cta text-center">
+    <h2>Bạn muốn tạo chiến dịch của riêng mình?</h2>
+    <p>Hãy bắt đầu gây quỹ và lan tỏa giá trị tốt đẹp ngay hôm nay</p>
+    <button class="cta-btn">Tạo chiến dịch</button>
 </section>
 
 <div id="footer"></div>
 
-<script src="/js/load.js"></script>
-
+<script src="../js/load.js"></script>
+<script src="./tochucgayquy.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</div>
 </body>
 </html>

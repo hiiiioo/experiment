@@ -1,0 +1,380 @@
+/* --- PHẦN CHUNG --- */
+html{
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.login-container * {
+    box-sizing: border-box;
+}
+
+.login-container .form-box a {
+    color: #ff4b00;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.login-container .form-box a:hover {
+    color: #e64400;
+    text-decoration: underline;
+}
+
+/* --- LAYOUT CHÍNH --- */
+.login-container{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* CỘT TRÁI */
+.login-container .left {
+    flex: 1;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background: radial-gradient(circle at 30% 30%, #ff9a6b, transparent 40%),
+                radial-gradient(circle at 70% 70%, #ff3d00, transparent 40%),
+                linear-gradient(135deg, #ff5f3d, #d62800);
+    background-size: 200% 200%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: gradientMove 6s ease infinite;
+}
+
+.clone {
+    animation-delay: -20s; /* chạy lệch để nối đuôi */
+}
+
+/* lớp phủ ánh sáng (tạo layer riêng để không bị đè) */
+.login-container .left .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.15),
+        transparent 40%
+    );
+}
+
+.login-container .left:hover .cloud {
+    filter: blur(0.5px) brightness(1.05);
+    transition: 0.4s;
+        transform: scale(1.05);
+}
+
+/* hero */
+.login-container .hero {
+    width: 80%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    z-index: 2;
+    transition: 0.4s;
+}
+
+.login-container .hero:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.login-container .left:hover .cloud {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+/* Cloud */
+
+.cloud {
+    position: absolute;
+    width: 300px;
+    z-index: 10;
+
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+       opacity: 0.8;
+    will-change: transform;
+     left: -250px;
+}
+
+.cloud img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+.cloud1 {
+    top: 80px;
+    animation: cloudLoop 20s linear infinite;
+}
+
+.cloud2 {
+    top: 285px;
+    animation: cloudLoop 30s linear infinite;
+}
+
+.cloud3 {
+    bottom: 150px;
+    animation: cloudLoop 40s linear infinite;
+}
+/* Clone Cloud */
+.cloud1.clone {
+    animation-delay: -10s; /* 20s / 2 */
+}
+
+.cloud2.clone {
+    animation-delay: -15s; /* 30s / 2 */
+}
+
+.cloud3.clone {
+    animation-delay: -20s; /* 40s / 2 */
+}
+
+.cloud img {
+    opacity: 0.8;
+    filter: blur(0.2px);
+}
+
+/* animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(20px); }
+}
+
+@keyframes cloudMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(100px); }
+}
+
+@keyframes cloudRun {
+    0% {
+        transform: translateX(0) scale(var(--s,1));
+    }
+    100% {
+        transform: translateX(calc(120vw + 300px)) scale(var(--s,1));
+    }
+}
+
+@keyframes cloudFloat {
+    0% { transform: translateY(0) scale(var(--s,1)); }
+    50% { transform: translateY(-6px) scale(var(--s,1)); }
+    100% { transform: translateY(0) scale(var(--s,1)); }
+}
+
+@keyframes cloudMoveFull {
+    0% {
+        transform: translateX(0) translateY(0) scale(var(--s,1));
+    }
+    50% {
+        transform: translateX(60vw) translateY(-6px) scale(var(--s,1));
+    }
+    100% {
+        transform: translateX(calc(120vw + 300px)) translateY(0) scale(var(--s,1));
+    }
+}
+
+@keyframes cloudLoop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(120vw + 300px));
+    }
+}
+
+.login-container .left::before,
+.login-container .left::after {
+    z-index: 0;
+}
+
+.login-container .hero {
+    z-index: 2;
+}
+
+.login-container .left .wave {
+    position: absolute;
+    bottom: -50px;
+    width: 200%;
+    height: 300px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 40%;
+    animation: waveMove 8s linear infinite;
+    filter: blur(10px);
+    z-index: 1;
+}
+
+.login-container .left .dark-layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.4)
+    );
+    z-index: 1;
+}
+
+/* CỘT PHẢI */
+.login-container .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f6f7; /* 👈 giống trang chủ */
+    padding: 20px;
+}
+
+.login-container .form-box {
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-container h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* --- INPUT & BUTTON --- */
+.login-container label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1.5px solid #eee;
+    margin-bottom: 4px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: #ff4b00;
+    box-shadow: 0 0 0 4px rgba(255, 75, 0, 0.1);
+}
+
+.login-container .login-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #ff8a3d, #ff4b00);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(255, 75, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.login-container .login-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- PASSWORD --- */
+.login-container .password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.login-container .eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.6;
+}
+
+/* --- OTP --- */
+.login-container .otp-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.login-container .otp-input {
+    width: 45px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.login-container .otp-input:focus {
+    border-color: #ff4b00;
+    outline: none;
+}
+
+/* --- ANIMATION --- */
+.login-container .fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .login-container .login-container {
+        flex-direction: column;
+    }
+
+    .login-container .left {
+        width: 100%;
+        min-height: 250px;
+        padding: 60px 20px 20px 20px;
+    }
+
+    .login-container .logo {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .login-container .hero {
+        width: 120px;
+        margin-top: 10px;
+    }
+
+    .login-container .right {
+        width: 100%;
+        padding: 40px 20px;
+        background: #f8f9fa;
+        border-radius: 30px 30px 0 0;
+        margin-top: -30px;
+    }
+
+    .login-container h2 {
+        text-align: center;
+        font-size: 24px;
+    }
+}

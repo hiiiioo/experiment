@@ -1,0 +1,117 @@
+/* ================= GLOBAL ================= */
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ================= CONTAINER ================= */
+.dieukhoan-page .container-dieukhoan{
+max-width:1000px;
+margin:40px auto;
+background:white;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* ================= HEADER ================= */
+
+.dieukhoan-page .header{
+background: #ff4d00;
+color: white;
+text-align: center;
+padding: 40px 20px;
+}
+
+.dieukhoan-page .header h1{
+margin: 0;
+font-size: 32px;
+}
+
+.dieukhoan-page .header p{
+margin-top: 10px;
+font-size: 16px;
+}
+
+/* ================= CONTENT ================= */
+.dieukhoan-page h2{
+font-size:24px;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.dieukhoan-page p{
+font-size:15px;
+color:#444;
+margin-bottom:16px;
+}
+
+.dieukhoan-page .content{
+padding: 30px 40px;
+line-height: 1.7;
+}
+
+.dieukhoan-page .content h3{
+margin-top: 25px;
+}
+
+.dieukhoan-page .content ul{
+margin-left: 20px;
+}
+
+.dieukhoan-page .content li{
+margin-bottom: 8px;
+}
+
+.banner{
+margin-top:0;
+}
+
+.banner{
+background:#ff6a00;
+text-align:center;
+color:white;
+padding:50px 20px;
+margin-bottom:30px;
+}
+
+.banner h1{
+font-size:34px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+.dieukhoan-page .container{
+width:95%;
+}
+
+.dieukhoan-page .header{
+padding:25px 15px;
+}
+
+.dieukhoan-page .header h1{
+font-size:24px;
+}
+
+.dieukhoan-page .header p{
+font-size:14px;
+}
+
+.dieukhoan-page .content{
+padding:20px;
+}
+
+.dieukhoan-page .content h3{
+font-size:18px;
+}
+
+.dieukhoan-page .content ul{
+margin-left:15px;
+}
+
+}
+
+

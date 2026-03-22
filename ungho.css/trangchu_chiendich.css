@@ -1,18 +1,14 @@
 /* ================= GLOBAL ================= */
-* {
-  font-family: "Roboto", sans-serif;
+html {
+    font-family: 'Roboto', sans-serif;
 }
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   background: #f5f6f7;
   min-height:100vh;
-display:flex;
-flex-direction:column;
-}
 
-.container {
-  max-width: 1400px;
 }
 
 /* ================= NAVBAR ================= */
@@ -53,7 +49,10 @@ flex-direction:column;
 
 .navbar-nav .nav-link:hover {
   color: #ff6a00;
+  transform: translateY(-1px);
 }
+
+
 
 /* ================= DROPDOWN ================= */
 
@@ -112,6 +111,7 @@ flex-direction:column;
   border: none;
   font-weight: 500;
   transition: 0.25s;
+  margin-right: 100px;
 }
 
 .btn-cam:hover {
@@ -1247,3 +1247,25 @@ margin-top:20px;
   display: block;
   color: #1a3cc8;
 }
+
+/* ===== FIX LỆCH NAVBAR CHUẨN ===== */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  padding-right: 30px; /* 👈 thêm dòng này */
+}
+
+.navbar-collapse {
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+}
+

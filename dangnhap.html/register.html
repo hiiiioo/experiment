@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+
+    <!-- FONT + ICON -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Bootstrap (LUÔN ĐẦU) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- CSS chung -->
+<link rel="stylesheet" href="../ungho.css/trangchu_chiendich.css">
+
+<!-- CSS riêng -->
+<link rel="stylesheet" href="./dangnhap.css">
+</head>
+
+<body class="login-page">
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- CONTENT -->
+<div class="login-container">
+    <div class="left">
+            <div class="dark-layer"></div>
+    <div class="overlay"></div>
+    <div class="wave"></div>
+<div class="cloud cloud1">
+    <img src="../img/gioithieu.img/easy-cloud-drawing-1-removebg-preview.png" alt="cloud">
+</div>
+
+<div class="cloud cloud1 clone">
+    <img src="../img/gioithieu.img/easy-cloud-drawing-1-removebg-preview.png">
+</div>
+
+<div class="cloud cloud2">
+    <img src="../img/gioithieu.img/easy-cloud-drawing-1-removebg-preview.png" alt="cloud">
+</div>
+
+<div class="cloud cloud2 clone">
+    <img src="../img/gioithieu.img/easy-cloud-drawing-1-removebg-preview.png">
+</div>
+
+<div class="cloud cloud3">
+    <img src="../img/gioithieu.img/easy-cloud-drawing-1-removebg-preview.png" alt="cloud">
+</div>
+
+<div class="cloud cloud3 clone">
+    <img src="../img/gioithieu.img/easy-cloud-drawing-1-removebg-preview.png">
+</div>
+    </div>
+
+    <div class="right">
+        <div class="form-box">
+            <h2>Đăng ký tài khoản</h2>
+
+            <form id="registerForm">
+                <input type="email" id="email" placeholder="Nhập địa chỉ email">
+                <p class="error" id="emailError"></p>
+
+                <input type="text" id="name" placeholder="Họ tên hoặc biệt danh">
+                <p class="error" id="nameError"></p>
+
+                <div class="password-wrapper">
+                    <input type="password" id="password1" placeholder="Nhập mật khẩu">
+                    <span onclick="togglePassword('password1')" class="eye">👁️</span>
+                </div>
+                <p class="error" id="passError"></p>
+
+                <div class="password-wrapper">
+                    <input type="password" id="password2" placeholder="Nhập lại mật khẩu">
+                    <span onclick="togglePassword('password2')" class="eye">👁️</span>
+                </div>
+                <p class="error" id="pass2Error"></p>
+
+                <button type="submit" class="login-btn">Tiếp tục</button>
+            </form>
+
+            <p class="register-text">
+                Bạn đã có tài khoản? <a href="./login.html">Đăng nhập</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- JS -->
+<script src="./dangnhap.js"></script>
+<script src="../js/load.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

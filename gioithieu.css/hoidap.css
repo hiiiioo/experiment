@@ -1,0 +1,139 @@
+/* ================= GLOBAL ================= */
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ================= CONTAINER ================= */
+.faq-page .container-faq{
+max-width:1200px;
+margin:auto;
+}
+
+.faq-page .faq-wrapper{
+padding-top:40px;
+}
+
+.faq-page .title{
+text-align:center;
+margin-bottom:30px;
+font-weight:600;
+font-size:30px;
+}
+
+.faq-page .section-title{
+margin-top:40px;
+text-align:center;
+}
+
+/* ================= LAYOUT ================= */
+.faq-page .faq-layout{
+display:flex;
+gap:30px;
+align-items:flex-start;
+margin-top:40px;
+}
+
+.faq-page .faq-page{
+padding-top:60px;
+}
+
+/* ================= SIDEBAR ================= */
+.faq-page .sidebar{
+width:300px;
+margin-top:40px;
+}
+
+.faq-page .menu-box{
+background:white;
+padding:15px;
+border-radius:12px;
+}
+
+.faq-page .menu-box .nav-link{
+color:#333;
+margin-bottom:5px;
+border-radius:8px;
+padding:12px;
+transition:0.2s;
+}
+
+.faq-page .menu-box .nav-link:hover{
+background:#f4c28a;
+}
+
+.faq-page .menu-box .nav-link.active{
+background:#f4c28a !important;
+color:#d86a6a !important;
+font-weight:500;
+}
+
+/* ================= FAQ ================= */
+
+.faq-page .faq-content{
+flex:1;
+}
+
+.faq-page .faq-box{
+border:1px solid #f4a75d;
+border-radius:8px;
+margin-bottom:20px;
+overflow:hidden;
+background:white;
+}
+
+.faq-page .faq-question{
+background:#f4c28a;
+padding:12px 15px;
+font-weight:bold;
+}
+
+.faq-page .faq-answer{
+padding:15px;
+}
+
+.faq-page ul{
+margin-top:10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+.faq-page .container-faq{
+width:100%;
+padding:20px;
+}
+
+.faq-page .faq-layout{
+flex-direction:column;
+gap:20px;
+}
+
+.faq-page .sidebar{
+width:100%;
+}
+
+.faq-page .menu-box{
+display:flex;
+overflow-x:auto;
+gap:10px;
+}
+
+.faq-page .menu-box .nav-link{
+white-space:nowrap;
+padding:10px 14px;
+font-size:14px;
+}
+
+.faq-page .faq-question{
+font-size:15px;
+padding:12px;
+}
+
+.faq-page .faq-answer{
+font-size:14px;
+padding:12px;
+}
+
+}
