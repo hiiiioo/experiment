@@ -1,7 +1,7 @@
 const data = [
     {
-        name: "Hội chữ thập đỏ Hà Nội",
-        user: "@hanoirc",
+        name: "Bạn Nguyễn Văn Quang",
+        user: "@hquang",
         tag: "Y tế",
         money: "28.788.538₫",
         progress: 65,
@@ -10,17 +10,17 @@ const data = [
         img: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
     },
     {
-        name: "Quỹ học bổng Ánh Sáng",
+        name: "Anh Ngô Thế Tùng",
         user: "@anhsang",
         tag: "Giáo dục",
-        money: "12.450.000₫",
+        money: "12.000₫",
         progress: 40,
         target: "30.000.000₫",
         donate: "532",
         img: "https://cdn-icons-png.flaticon.com/512/201/201623.png"
     },
     {
-        name: "Xanh Việt Nam",
+        name: "Bạn Lê Anh Quân",
         user: "@xanhvn",
         tag: "Môi trường",
         money: "8.900.000₫",
@@ -30,7 +30,7 @@ const data = [
         img: "https://cdn-icons-png.flaticon.com/512/427/427735.png"
     },
     {
-        name: "Xanh Việt Nam",
+        name: "Anh Trường",
         user: "@xanhvn",
         tag: "Môi trường",
         money: "8.900.000₫",
@@ -40,7 +40,7 @@ const data = [
         img: "https://cdn-icons-png.flaticon.com/512/427/427735.png"
     },
     {
-        name: "Xanh Việt Nam",
+        name: "Anh Văn",
         user: "@xanhvn",
         tag: "Môi trường",
         money: "8.900.000₫",
@@ -50,7 +50,7 @@ const data = [
         img: "https://cdn-icons-png.flaticon.com/512/427/427735.png"
     },
     {
-        name: "Xanh Việt Nam",
+        name: "Anh Văn",
         user: "@xanhvn",
         tag: "Môi trường",
         money: "8.900.000₫",

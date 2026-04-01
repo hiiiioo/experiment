@@ -16,7 +16,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 9999;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.95);
   padding:6px 0;
@@ -74,10 +74,6 @@ body {
   color: #ff6a00;
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 0;
-}
 
 /* ================= SEARCH BOX ================= */
 
@@ -111,7 +107,7 @@ body {
   border: none;
   font-weight: 500;
   transition: 0.25s;
-  margin-right: 100px;
+  margin-right: 60px;
 }
 
 .btn-cam:hover {
@@ -1269,3 +1265,44 @@ margin-top:20px;
   align-items: center;
 }
 
+.avatar-default {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;      /* giữ tỷ lệ, không méo */
+  cursor: pointer;
+}
+
+/* ===== AVATAR DROPDOWN ===== */
+
+.dropdown {
+  position: relative;
+}
+
+/* ===== TẤT CẢ DROPDOWN HOVER ===== */
+.navbar .dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: 0.2s;
+}
+
+.navbar .dropdown:hover > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* avatar dropdown lên cao hơn */
+.dropdown-menu-end {
+  top: 45px !important;
+  right: 0;
+}
+
+/* BẮT BUỘC override Bootstrap */
+.navbar .dropdown-menu {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: 0.2s;
+}

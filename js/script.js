@@ -19,7 +19,6 @@ function scrollProject() {
 /* ================= MAIN ================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-
   const moreBtn = document.getElementById("showMore");
   const collapseBtn = document.getElementById("collapse");
 
@@ -28,7 +27,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const statusFilter = document.getElementById("statusFilter");
   const resetBtn = document.getElementById("resetFilter");
-  const searchInput = document.getElementById("searchCampaign");
+const globalSearch = document.getElementById("globalSearch");
+
+if (globalSearch) {
+  globalSearch.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      let keyword = this.value.toLowerCase().trim();
+
+      // ===== DANH SÁCH TỪ KHÓA =====
+      const orgKeywords = [
+        "tổ chức", "to chuc",
+        "hội", "quỹ", "foundation", "group"
+      ];
+
+      const personKeywords = [
+        "cá nhân", "ca nhan",
+        "anh", "chị", "em"
+      ];
+
+      // ===== KIỂM TRA =====
+      const isOrg = orgKeywords.some(k => keyword.includes(k));
+      const isPerson = personKeywords.some(k => keyword.includes(k));
+
+      if (isOrg) {
+        window.location.href = "ungho/to_chuc_gay_quy.html";
+      }
+      else if (isPerson) {
+        window.location.href = "ungho/ca_nhan_gay_quy.html";
+      }
+      else {
+        alert("Không xác định được 😢 (thử gõ 'tổ chức' hoặc 'cá nhân')");
+      }
+    }
+  });
+}
 
   const categoryBtn = document.getElementById("categoryBtn");
   const categoryMenu = document.getElementById("categoryMenu");
@@ -36,215 +70,190 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainImg = document.querySelector(".campaign-main-img");
   const rows = document.querySelectorAll(".donor-row");
 
-/* =======================
+  /* =======================
 ADVANCED FILTER
 ======================= */
 
-const advancedBtn = document.getElementById("advancedBtn");
-const advancedFilter = document.getElementById("advancedFilter");
+  const advancedBtn = document.getElementById("advancedBtn");
+  const advancedFilter = document.getElementById("advancedFilter");
 
-const applyAdvanced = document.getElementById("applyAdvanced");
-const resetAdvanced = document.getElementById("resetAdvanced");
+  const applyAdvanced = document.getElementById("applyAdvanced");
+  const resetAdvanced = document.getElementById("resetAdvanced");
 
-const amountFilter = document.getElementById("amountFilter");
-const dateFrom = document.getElementById("dateFrom");
-const dateTo = document.getElementById("dateTo");
+  const amountFilter = document.getElementById("amountFilter");
+  const dateFrom = document.getElementById("dateFrom");
+  const dateTo = document.getElementById("dateTo");
 
-if (applyAdvanced) {
+  if (applyAdvanced) {
+    applyAdvanced.onclick = function () {
+      let amount = amountFilter.value;
+      let from = dateFrom.value;
+      let to = dateTo.value;
 
-applyAdvanced.onclick = function(){
+      rows.forEach((row) => {
+        let moneyText = row.children[1].innerText.replace(/[^\d]/g, "");
+        let money = parseInt(moneyText);
 
-let amount = amountFilter.value;
-let from = dateFrom.value;
-let to = dateTo.value;
+        let dateText = row.children[2].innerText.split(" ")[0];
 
-rows.forEach(row => {
+        let parts = dateText.split("/");
+        let day = parseInt(parts[0]);
+        let month = parseInt(parts[1]) - 1;
+        let year = parseInt(parts[2]);
 
-let moneyText = row.children[1].innerText.replace(/[^\d]/g,"");
-let money = parseInt(moneyText);
+        let date = new Date(year, month, day);
 
-let dateText = row.children[2].innerText.split(" ")[0];
+        let show = true;
 
-let parts = dateText.split("/");
-let day = parseInt(parts[0]);
-let month = parseInt(parts[1]) - 1;
-let year = parseInt(parts[2]);
+        /* lọc theo tiền */
 
-let date = new Date(year, month, day);
+        if (amount === "50000") {
+          if (money >= 50000) show = false;
+        }
 
-let show = true;
+        if (amount === "100000") {
+          if (money < 50000 || money > 100000) show = false;
+        }
 
-/* lọc theo tiền */
+        if (amount === "200000") {
+          if (money < 100000 || money > 200000) show = false;
+        }
 
-if(amount === "50000"){
-if(money >= 50000) show = false;
-}
+        if (amount === "500000") {
+          if (money <= 200000) show = false;
+        }
 
-if(amount === "100000"){
-if(money < 50000 || money > 100000) show = false;
-}
+        /* lọc theo ngày */
 
-if(amount === "200000"){
-if(money < 100000 || money > 200000) show = false;
-}
+        if (from) {
+          let f = new Date(from);
+          let fromDate = new Date(f.getFullYear(), f.getMonth(), f.getDate());
 
-if(amount === "500000"){
-if(money <= 200000) show = false;
-}
+          if (date < fromDate) show = false;
+        }
 
-/* lọc theo ngày */
+        if (to) {
+          let t = new Date(to);
+          let toDate = new Date(t.getFullYear(), t.getMonth(), t.getDate());
 
-if(from){
-let f = new Date(from);
-let fromDate = new Date(f.getFullYear(), f.getMonth(), f.getDate());
+          if (date > toDate) show = false;
+        }
 
-if(date < fromDate) show = false;
-}
+        row.dataset.hidden = show ? "false" : "true";
+      });
 
-if(to){
-let t = new Date(to);
-let toDate = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+      currentPage = 1;
+      showPage(currentPage);
 
-if(date > toDate) show = false;
-}
+      advancedFilter.classList.add("d-none");
+    };
+  }
 
-row.dataset.hidden = show ? "false" : "true";
+  if (advancedBtn) {
+    advancedBtn.onclick = function () {
+      advancedFilter.classList.toggle("d-none");
+    };
+  }
 
-});
+  if (resetAdvanced) {
+    resetAdvanced.onclick = function () {
+      amountFilter.value = "all";
+      dateFrom.value = "";
+      dateTo.value = "";
 
-currentPage = 1;
-showPage(currentPage);
+      rows.forEach((row) => {
+        row.style.display = "";
+      });
 
-advancedFilter.classList.add("d-none");
-}
-
-}
-
-if(advancedBtn){
-
-advancedBtn.onclick = function(){
-
-advancedFilter.classList.toggle("d-none");
-
-}
-
-}
-
-if(resetAdvanced){
-
-resetAdvanced.onclick = function(){
-
-amountFilter.value = "all";
-dateFrom.value = "";
-dateTo.value = "";
-
-rows.forEach(row=>{
-row.style.display="";
-});
-
-currentPage = 1;
-showPage(currentPage);
-
-}
-
-}
+      currentPage = 1;
+      showPage(currentPage);
+    };
+  }
 
   /* =======================
 SEARCH DONOR
 ======================= */
 
-const donorSearch = document.getElementById("searchDonor");
-const donorRows = document.querySelectorAll(".donor-row");
+  const donorSearch = document.getElementById("searchDonor");
+  const donorRows = document.querySelectorAll(".donor-row");
 
-if (donorSearch) {
+  if (donorSearch) {
+    donorSearch.addEventListener("keyup", function () {
+      let keyword = this.value.toLowerCase();
 
-donorSearch.addEventListener("keyup", function () {
+      rows.forEach((row) => {
+        let name = row.children[0].innerText.toLowerCase();
 
-let keyword = this.value.toLowerCase();
+        row.style.display = name.includes(keyword) ? "" : "none";
+      });
 
-rows.forEach(row => {
+      currentPage = 1;
+      showPage(currentPage);
+    });
+  }
 
-let name = row.children[0].innerText.toLowerCase();
-
-row.style.display = name.includes(keyword) ? "" : "none";
-
-});
-
-currentPage = 1;
-showPage(currentPage);
-
-});
-
-}
-
-/* =======================
+  /* =======================
 DONOR PAGINATION
 ======================= */
 
-const rowsPerPage = 5;
-let currentPage = 1;
+  const rowsPerPage = 5;
+  let currentPage = 1;
 
-const pageInfo = document.getElementById("pageInfo");
-const prevBtn = document.getElementById("prevPage");
-const nextBtn = document.getElementById("nextPage");
+  const pageInfo = document.getElementById("pageInfo");
+  const prevBtn = document.getElementById("prevPage");
+  const nextBtn = document.getElementById("nextPage");
 
-function showPage(page){
+  function showPage(page) {
+    let filteredRows = Array.from(rows).filter(
+      (row) => row.dataset.hidden !== "true",
+    );
 
-let filteredRows = Array.from(rows).filter(row => row.dataset.hidden !== "true");
+    let start = (page - 1) * rowsPerPage;
+    let end = start + rowsPerPage;
 
-let start = (page - 1) * rowsPerPage;
-let end = start + rowsPerPage;
+    rows.forEach((row) => (row.style.display = "none"));
 
-rows.forEach(row => row.style.display = "none");
+    filteredRows.slice(start, end).forEach((row) => {
+      row.style.display = "";
+    });
 
-filteredRows.slice(start, end).forEach(row=>{
-row.style.display = "";
-});
+    let total = Math.ceil(filteredRows.length / rowsPerPage);
 
-let total = Math.ceil(filteredRows.length / rowsPerPage);
+    pageInfo.innerText = page + " / " + total;
 
-pageInfo.innerText = page + " / " + total;
+    prevBtn.disabled = page === 1;
+    nextBtn.disabled = page === total;
+  }
 
-prevBtn.disabled = page === 1;
-nextBtn.disabled = page === total;
+  if (rows.length) {
+    showPage(currentPage);
 
-}
+    prevBtn.onclick = function () {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    };
 
-if(rows.length){
+    nextBtn.onclick = function () {
+      let filteredRows = Array.from(rows).filter(
+        (row) => row.dataset.hidden !== "true",
+      );
+      let totalPages = Math.ceil(filteredRows.length / rowsPerPage);
 
-showPage(currentPage);
-
-prevBtn.onclick = function(){
-
-if(currentPage > 1){
-currentPage--;
-showPage(currentPage);
-}
-
-}
-
-nextBtn.onclick = function(){
-
-let filteredRows = Array.from(rows).filter(row => row.dataset.hidden !== "true");
-let totalPages = Math.ceil(filteredRows.length / rowsPerPage);
-
-if(currentPage < totalPages){
-currentPage++;
-showPage(currentPage);
-}
-
-}
-
-}
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    };
+  }
 
   /* =======================
   XEM THÊM / THU GỌN
   ======================= */
 
   if (moreBtn) {
-
     moreBtn.onclick = function () {
-
       document.querySelectorAll(".extra").forEach((e) => {
         e.classList.remove("d-none");
       });
@@ -254,7 +263,6 @@ showPage(currentPage);
     };
 
     collapseBtn.onclick = function () {
-
       document.querySelectorAll(".extra").forEach((e) => {
         e.classList.add("d-none");
       });
@@ -265,37 +273,32 @@ showPage(currentPage);
       document.querySelector(".container").scrollIntoView({
         behavior: "smooth",
       });
-
     };
   }
 
   /* =======================
   TAB FILTER
   ======================= */
-tabs.forEach(tab => {
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      tabs.forEach((t) => t.classList.remove("active"));
+      this.classList.add("active");
 
-  tab.addEventListener("click", function () {
+      let filter = this.dataset.filter;
 
-    tabs.forEach(t => t.classList.remove("active"));
-    this.classList.add("active");
+      // thêm dòng này
+      currentCategory = filter;
 
-    let filter = this.dataset.filter;
+      applyFilter();
 
-    // thêm dòng này
-    currentCategory = filter;
-
-    applyFilter();
-
-    if (filter === "all") {
-      if (moreBtn) moreBtn.classList.remove("d-none");
-    } else {
-      if (moreBtn) moreBtn.classList.add("d-none");
-      if (collapseBtn) collapseBtn.classList.add("d-none");
-    }
-
+      if (filter === "all") {
+        if (moreBtn) moreBtn.classList.remove("d-none");
+      } else {
+        if (moreBtn) moreBtn.classList.add("d-none");
+        if (collapseBtn) collapseBtn.classList.add("d-none");
+      }
+    });
   });
-
-});
 
   /* =======================
   STATUS FILTER
@@ -303,10 +306,8 @@ tabs.forEach(tab => {
 
   if (statusFilter) {
     statusFilter.addEventListener("change", function () {
-
       currentStatus = this.value;
       applyFilter();
-
     });
   }
 
@@ -314,133 +315,108 @@ tabs.forEach(tab => {
   SEARCH
   ======================= */
 
-if (searchInput) {
-
-  searchInput.addEventListener("keyup", function () {
-
-    applyFilter();
-
-  });
-
-}
+  if (searchInput) {
+    searchInput.addEventListener("keyup", function () {
+      applyFilter();
+    });
+  }
 
   /* =======================
   RESET FILTER
   ======================= */
-if (resetBtn) {
+  if (resetBtn) {
+    resetBtn.onclick = function () {
+      currentStatus = "all";
+      currentCategory = "all";
 
-  resetBtn.onclick = function () {
+      if (searchInput) searchInput.value = "";
+      if (statusFilter) statusFilter.value = "all";
 
-    currentStatus = "all";
-    currentCategory = "all";
+      tabs.forEach((t) => t.classList.remove("active"));
+      document.querySelector('[data-filter="all"]').classList.add("active");
 
-    if (searchInput) searchInput.value = "";
-    if (statusFilter) statusFilter.value = "all";
+      if (categoryBtn) {
+        categoryBtn.firstChild.textContent = "Danh mục ";
+      }
 
-    tabs.forEach(t => t.classList.remove("active"));
-    document.querySelector('[data-filter="all"]').classList.add("active");
-
-    if (categoryBtn) {
-      categoryBtn.firstChild.textContent = "Danh mục ";
-    }
-
-    applyFilter();
-
-  };
-
-}
+      applyFilter();
+    };
+  }
 
   /* =======================
   GALLERY IMAGE
   ======================= */
 
   if (mainImg) {
-
-    document.querySelectorAll(".campaign-gallery img").forEach(img => {
-
+    document.querySelectorAll(".campaign-gallery img").forEach((img) => {
       img.addEventListener("click", function () {
-
         mainImg.src = this.src;
 
-        document.querySelectorAll(".campaign-gallery img")
-          .forEach(i => i.classList.remove("active"));
+        document
+          .querySelectorAll(".campaign-gallery img")
+          .forEach((i) => i.classList.remove("active"));
 
         this.classList.add("active");
-
       });
-
     });
-
   }
 
-/* =======================
+  /* =======================
 CATEGORY FILTER
 ======================= */
 
-if (categoryBtn) {
-
-  categoryBtn.onclick = function () {
-    categoryMenu.classList.toggle("d-none");
-  };
-
-  document.querySelectorAll(".category-menu-item").forEach(item => {
-
-    item.onclick = function () {
-
-      currentCategory = this.dataset.filter || "all";
-
-      // lấy text thôi
-      let text = this.querySelector("span").innerText;
-
-      // chỉ thay text, giữ icon
-      categoryBtn.firstChild.textContent = text + " ";
-
-      applyFilter();
-
-      categoryMenu.classList.add("d-none");
-
+  if (categoryBtn) {
+    categoryBtn.onclick = function () {
+      categoryMenu.classList.toggle("d-none");
     };
 
-  });
+    document.querySelectorAll(".category-menu-item").forEach((item) => {
+      item.onclick = function () {
+        currentCategory = this.dataset.filter || "all";
 
-}
+        // lấy text thôi
+        let text = this.querySelector("span").innerText;
 
-/* ================= APPLY FILTER ================= */
-function applyFilter() {
+        // chỉ thay text, giữ icon
+        categoryBtn.firstChild.textContent = text + " ";
 
-  const keyword = searchInput ? searchInput.value.toLowerCase() : "";
+        applyFilter();
 
-  campaigns.forEach(card => {
+        categoryMenu.classList.add("d-none");
+      };
+    });
+  }
 
-    let matchStatus = true;
-    let matchCategory = true;
-    let matchSearch = true;
+  /* ================= APPLY FILTER ================= */
+  function applyFilter() {
+    const keyword = searchInput ? searchInput.value.toLowerCase() : "";
 
-    if (currentStatus !== "all") {
-      matchStatus = card.classList.contains(currentStatus);
-    }
+    campaigns.forEach((card) => {
+      let matchStatus = true;
+      let matchCategory = true;
+      let matchSearch = true;
 
-    if (currentCategory !== "all") {
-      matchCategory = card.classList.contains(currentCategory);
-    }
+      if (currentStatus !== "all") {
+        matchStatus = card.classList.contains(currentStatus);
+      }
 
-    if (keyword !== "") {
-      const title = card.querySelector("h6").innerText.toLowerCase();
-      matchSearch = title.includes(keyword);
-    }
+      if (currentCategory !== "all") {
+        matchCategory = card.classList.contains(currentCategory);
+      }
 
-    if (matchStatus && matchCategory && matchSearch) {
-      card.style.display = "";
-    } else {
-      card.style.display = "none";
-    }
+      if (keyword !== "") {
+        const title = card.querySelector("h6").innerText.toLowerCase();
+        matchSearch = title.includes(keyword);
+      }
 
-  });
-
-}
-
+      if (matchStatus && matchCategory && matchSearch) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
 });
-
 
 // =======================
 // Campaign Slider
@@ -517,4 +493,3 @@ const targets = document.querySelectorAll(".animate");
 targets.forEach((el) => {
   observer.observe(el);
 });
-

@@ -3,11 +3,11 @@ html {
 }
 
 /* ================= SEARCH ================= */
-.tochuc-page .search-box-org {
+.canhan-page .search-box-org {
     margin-top: 60px;
 }
 
-.tochuc-page .search-inner {
+.canhan-page .search-inner {
     background: white;
     border-radius: 20px;
     padding: 18px 22px;
@@ -17,24 +17,24 @@ html {
     transition: 0.3s;
 }
 
-.tochuc-page .search-inner:focus-within {
+.canhan-page .search-inner:focus-within {
     box-shadow: 0 10px 30px rgba(255,90,0,0.15);
 }
 
-.tochuc-page .search-inner i {
+.canhan-page .search-inner i {
     color: #bbb;
     margin-right: 10px;
     font-size: 18px;
 }
 
-.tochuc-page .search-inner input {
+.canhan-page .search-inner input {
     flex: 1;
     border: none;
     outline: none;
     font-size: 15px;
 }
 
-.tochuc-page .search-inner button {
+.canhan-page .search-inner button {
     background: linear-gradient(135deg, #ff7a18, #ff5a00);
     color: white;
     border: none;
@@ -44,13 +44,13 @@ html {
     transition: 0.3s;
 }
 
-.tochuc-page .search-inner button:hover {
+.canhan-page .search-inner button:hover {
     transform: translateY(-1px);
     box-shadow: 0 5px 15px rgba(255,90,0,0.3);
 }
 
 /* ================= CARD ================= */
-.tochuc-page .org-card {
+.canhan-page .org-card {
     background: white;
     border-radius: 20px;
     padding: 22px;
@@ -68,19 +68,19 @@ html {
     transform: scale(0.97);
 }
 
-.tochuc-page .org-card:hover {
+.canhan-page .org-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
 /* ================= HEADER CARD ================= */
-.tochuc-page .org-header {
+.canhan-page .org-header {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.tochuc-page .org-header img {
+.canhan-page .org-header img {
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -89,26 +89,26 @@ html {
     border: 2px solid #f1f1f1;
 }
 
-.tochuc-page .org-header h5 {
+.canhan-page .org-header h5 {
     margin: 0;
     font-weight: 600;
     font-size: 17px;
 }
 
-.tochuc-page .org-header span {
+.canhan-page .org-header span {
     color: #999;
     font-size: 13px;
 }
 
 /* ================= BODY ================= */
-.tochuc-page .org-body p {
+.canhan-page .org-body p {
     margin: 6px 0;
     color: #555;
     font-size: 14px;
 }
 
 /* highlight số tiền */
-.tochuc-page .org-body p strong {
+.canhan-page .org-body p strong {
     color: #ff5a00;
     font-weight: 600;
 }
@@ -200,7 +200,7 @@ html {
 .hero {
     background: 
             linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
-        url("../img/ungho.img/nhung-buc-anh-an-tuong-ve-tre-em-vung-cao-cua-chang-trai-9x-.webp");
+        url("../img/ungho.img/banner.webp");
     background-size: cover;
     background-position: center;
     padding: 90px 0 70px;
@@ -420,11 +420,11 @@ html {
     color: white;
 }
 
-.tochuc-page .org-card {
+.canhan-page .org-card {
     cursor: pointer;
 }
 
-.tochuc-page .org-card:hover .money {
+.canhan-page .org-card:hover .money {
     transform: scale(1.05);
 }
 
